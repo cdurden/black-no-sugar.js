@@ -1,5 +1,8 @@
 # black-no-sugar
-This framework, which follows The Elm Architecture, should make you feel like you are coding your app in Javascript. It has been written with help from a GPT (Gemini?).
+This framework, which follows The Elm Architecture, should make you feel like you are coding your app in vanilla Javascript. It has been written with help from a GPT (Gemini?).
+
+# It's all Javascript!
+You sign a contract to implement your components using a model-view-update+subscription interface. You also must implement side effects using an effects manager interface. That's about it!
 
 # How it works
 It implements the xylem and phloem of a tree of nested components, passing messages up and down from the root. You should know that the components are of two types: containers, and "leaf" components. And each component implements four lifecycle methods: init, view, update, and subscriptions. It's like vanilla javascript!
@@ -38,6 +41,6 @@ The AI said it use cascading execution (the bubble and intercept pattern), which
 ## Subscriptions
 According to the AI (Google Gemini?) "Every component that needs real-time network data must now expose a pure subscriptions function [1]. This function inspects the current Model and returns a list of topics it wants to listen to [1]." (sic) Each subscription can contain callback functions that can be called directly by the root engine.
 
-Interesting concept, hey? Take a moment to ponder... How is the subscriptions mechanism for passing messages different from the messages passed to and from commands? I am still wrapping my mind around this, but here's one way to think about it: Subscriptions pass on messages received from the engine and its connected (backend) resources, whereas messages generating commands (through our update functions) originate from the DOM.
+Interesting concept, hey? Take a moment to ponder... How is the subscriptions mechanism for passing messages different from the messages passed to and from commands? I am still wrapping my mind around this, but here's one way to think about it: Subscriptions pass on messages received from the engine and its connected (backend) resources, whereas messages received from the DOM generate commands (through the update functions).
 
-Finally, it is worth keeping in mind that subscription callbacks return component-level messages, which are fed to the update function.
+Finally, it is worth keeping in mind that subscription callbacks also return component-level messages, which are fed to the update function.
