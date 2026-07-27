@@ -1,0 +1,43 @@
+{
+	"files": [
+		"./src/index.ts"
+	],
+	"compilerOptions": {
+		"target": "es2023",
+		"module": "esnext",
+		"lib": [
+			"ES2023",
+			"DOM"
+		],
+		"types": [
+			"vite/client"
+		],
+		"allowArbitraryExtensions": true,
+		"skipLibCheck": true,
+		/* Linting */
+		"noUnusedLocals": false,
+		"noUnusedParameters": true,
+		"erasableSyntaxOnly": true,
+		"noFallthroughCasesInSwitch": true,
+		/* Bundler mode */
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
+		"moduleDetection": "force",
+		/* Library compilation */
+		"noEmit": true, // Vite will handle emitting everything
+		"declaration": false,
+		"declarationMap": false,
+		"emitDeclarationOnly": false,
+		"outDir": "./dist",
+		"rootDir": "./src"
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		"src/backend/**/*",
+		"src/old/**/*"
+	]
+}
