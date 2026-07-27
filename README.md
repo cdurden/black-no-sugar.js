@@ -7,27 +7,27 @@ It implements the xylem and phloem, passing messages up and down a tree of neste
 The signaling goes something like this: Messages dispatch from event listeners defined in views. Every message will reach the root component first (see cascading execution below) and then the message is passed back up (down?) to update the tree. Each update function may generate commands (a command is data representing the *intent* to perform an action). The root maintains effect managers which collect the commands and orchestrate their execution. The engine also registers subscription callbacks collected from the components' subscription methods.
 
 ```
-+---------------------+          +-----------------------+
-|   Effect Managers   | <------- |        Engine         |
-+---------------------+          +-----------------------+
++---------------------+          +------------------------+
+|   Effect Managers   | <------- |         Engine         |
++---------------------+          +------------------------+
           |                          .       ^        ^
    Dispatches(Sub)             Initializes & .   Executes(Cmd)
           |                     updates(Msg) .        .
           |                          .       .        .
 +------------------------------------.-------.--------.---+
-|         | Top-Level App Component  .       .        .   |
+|         |  Top-Level App Component .       .        .   |
 |         |                          .       .        .   |
 | +-------|--------------------------.-------.--------.-+ |
 | |       |  Parent Component        .       .        . | |
 | |       |                          v       .        . | |
-| |  +----|----------------------------------.------+ . | |
-| |  |    v Deep Child Component    Dispatches(Msg) | . | |
-| |  |  +--subscriptions(Msg)---+---view-----.---+  | . | |
-| |  |  |                       |        (v)DOM  |  | . | |
-| |  |  +--update(Msg)----------+----------------+  | . | |
-| |  |  | => [Model, Cmd(Msg)]) . . . . . . . . . . . . | |
-| |  |  +-----------------------+                  |    | |     
-| |  +---------------------------------------------+    | |
+| |  +----|-----------------------------Dispatches--+ . | |
+| |  |    v  Deep Child Component          (Msg)    | . | |
+| |  |  +--subscriptions(Msg)--+----view-----|---+  | . | |
+| |  |  |                      |         (v)DOM  |  | . | |
+| |  |  +--init----------+--update(Msg)----------+  | . | |
+| |  |  |                | => [Model, Cmd(Msg)]). . . . | |
+| |  |  +----------------+-----------------------+  |   | |     
+| |  +----------------------------------------------+   | |
 | +-----------------------------------------------------+ |
 +---------------------------------------------------------+
 ```
