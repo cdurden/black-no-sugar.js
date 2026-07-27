@@ -1,5 +1,5 @@
 # black-no-sugar
-This framework, which follows The Elm Architecture, should not make you feel like you are doing something other than writing Javascript code. It has been written with help from a GPT (Gemini?).
+This framework, which follows The Elm Architecture, should make you feel like you are coding your app in Javascript. It has been written with help from a GPT (Gemini?).
 
 # How it works
 It implements the xylem and phloem, passing messages up and down a tree of nested components. You should know that the components are of two types: containers, and "leaf" components. And each component implements four lifecycle methods: init, view, update, and subscriptions. It's like vanilla javascript!
