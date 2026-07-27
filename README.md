@@ -38,6 +38,6 @@ The AI said it use cascading execution (the bubble and intercept pattern), which
 ## Subscriptions
 According to the AI (Google Gemini?) "Every component that needs real-time network data must now expose a pure subscriptions function [1]. This function inspects the current Model and returns a list of topics it wants to listen to [1]." (sic) Each subscription can contain callback functions that can be called directly by the root engine.
 
-Interesting concept, hey? Take a moment to ponder: How is the subscriptions mechanism for passing messages different from the messages passed to and from commands? I am still wrapping my mind around this, but here's one way to think about it: Subscriptions pass on messages received from the engine and its connected (backend) resources, whereas messages generating commands (through our update functions) originate from the DOM.
+Interesting concept, hey? Take a moment to ponder... How is the subscriptions mechanism for passing messages different from the messages passed to and from commands? I am still wrapping my mind around this, but here's one way to think about it: Subscriptions pass on messages received from the engine and its connected (backend) resources, whereas messages generating commands (through our update functions) originate from the DOM.
 
 Finally, it is worth keeping in mind that subscription callbacks return component-level messages, which are fed to the update function.
