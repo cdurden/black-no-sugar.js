@@ -2,7 +2,7 @@
 This framework, which follows The Elm Architecture, should make you feel like you are coding your app in Javascript. It has been written with help from a GPT (Gemini?).
 
 # How it works
-It implements the xylem and phloem, passing messages up and down a tree of nested components. You should know that the components are of two types: containers, and "leaf" components. And each component implements four lifecycle methods: init, view, update, and subscriptions. It's like vanilla javascript!
+It implements the xylem and phloem of a tree of nested components, passing messages up and down from the root. You should know that the components are of two types: containers, and "leaf" components. And each component implements four lifecycle methods: init, view, update, and subscriptions. It's like vanilla javascript!
 
 The signaling goes something like this: Messages dispatch from event listeners defined in views. Every message will reach the root component first (see cascading execution below) and then the message is passed back up (down?) to update the tree. Each update function may generate commands (a command is data representing the *intent* to perform an action). The root maintains effect managers which collect the commands and orchestrate their execution. The engine also registers subscription callbacks collected from the components' subscription methods.
 
